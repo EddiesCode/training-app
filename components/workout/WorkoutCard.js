@@ -51,6 +51,8 @@ const WorkoutCard = ({
             navigation.navigate("StartExercise", {
               exerciseName: exercise,
               exerciseId: id,
+              sets,
+              reps,
             });
           } else console.log(exercise, id);
         }}

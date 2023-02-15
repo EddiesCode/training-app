@@ -47,6 +47,8 @@ const Exercises = ({ exercises, screen }) => {
                 screen={screen}
                 exercise={item.exercise}
                 selected={item.selected}
+                sets={item.sets}
+                reps={item.reps}
               />
             )}
           />
