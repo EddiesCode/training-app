@@ -94,7 +94,9 @@ const Workouts = ({ navigation, route }) => {
                 style={{ width: "75%" }}
                 source={require("../assets/lottie-animations/29951-healthy-lifestyle-exercise.json")}
               />
-              <Paragraph>No workouts added</Paragraph>
+              <Paragraph style={{ color: "#FFFFFF" }}>
+                No workouts added
+              </Paragraph>
             </View>
           )}
         </>
