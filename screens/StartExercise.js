@@ -1,5 +1,7 @@
 import React from "react";
-import { Text } from "react-native-paper";
+import { TouchableOpacity, View } from "react-native";
+import { Text, Headline } from "react-native-paper";
+import AmountPill from "../components/workout/AmountPill";
 import exerciseStore from "../store/exerciseStore";
 
 export const StartExercise = ({ navigation, route }) => {
@@ -7,9 +9,40 @@ export const StartExercise = ({ navigation, route }) => {
   console.log(sets, reps);
 
   return (
-    <Text style={{ color: "white" }}>
-      {exerciseName}, {exerciseId}, {sets}, {reps}
-    </Text>
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Headline style={{ color: "white" }}>{exerciseName}</Headline>
+        <Text style={{ color: "white" }}>{sets}</Text>
+        <Text style={{ color: "white" }}>{reps}</Text>
+        <AmountPill
+          title={"Weight"}
+          amount={2}
+          addFunc={() => {}}
+          subFunc={() => {}}
+        />
+      </View>
+
+      <TouchableOpacity
+        style={{
+          paddingVertical: 24,
+          alignSelf: "center",
+          marginBottom: 50,
+          paddingHorizontal: 24,
+        }}
+      >
+        <Text style={{ color: "#FFFFFF" }}>Next Set</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
