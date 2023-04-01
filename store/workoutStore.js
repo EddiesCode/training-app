@@ -1,7 +1,6 @@
-/*** src/Store.js ***/
-import "react-native-get-random-values";
+import * as crypto from "expo-crypto";
+
 import { makeAutoObservable } from "mobx";
-import { v4 as uuidv4 } from "uuid";
 import { makePersistable, stopPersisting } from "mobx-persist-store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -9,7 +8,7 @@ function addWorkout(workouts, workoutName, exercises) {
   return [
     ...workouts,
     {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       name: workoutName,
       exercises: exercises,
     },

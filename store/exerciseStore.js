@@ -1,6 +1,6 @@
-import "react-native-get-random-values";
+import * as crypto from "expo-crypto";
+
 import { makeAutoObservable } from "mobx";
-import { v4 as uuidv4 } from "uuid";
 import { defaultData } from "../assets/defaultData";
 import { makePersistable, clearPersistedStore } from "mobx-persist-store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -9,7 +9,7 @@ function addDefaultExercise(exercises, exerciseName, image) {
   return [
     ...exercises,
     {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       exercise: exerciseName,
       image: image,
       selected: false,

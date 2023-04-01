@@ -1,57 +1,56 @@
-import "react-native-get-random-values";
-import { v4 as uuidv4 } from "uuid";
+import * as crypto from "expo-crypto";
 
 export const defaultData = [
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Bench Press",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Deadlift",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Squats",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Lat Pulldown",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Biceps Curls",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Shoulder Press",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Leg Curls",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Leg Extenstions",
     image: "",
     selected: false,
   },
   {
-    id: uuidv4(),
+    id: crypto.randomUUID(),
     exercise: "Rows",
     image: "",
     selected: false,
