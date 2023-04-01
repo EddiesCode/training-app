@@ -49,20 +49,13 @@ const Workouts = ({ navigation, route }) => {
                     style={styles.listItemStyle}
                     onPress={() => onPressAction(item)}
                   >
-                    <View style={{}}>
-                      <Headline style={{ alignSelf: "center" }}>
-                        {item.name}
-                      </Headline>
-                      <Caption style={{ alignSelf: "center" }}>
+                    <View>
+                      <Headline>{item.name}</Headline>
+                      <Caption>
                         Number of exercises: {item.exercises.length}
                       </Caption>
                     </View>
-                    <View
-                      style={{
-                        position: "absolute",
-                        right: 20,
-                      }}
-                    >
+                    <View style={{}}>
                       <Icon
                         name={
                           screenType === "edit"
@@ -112,8 +105,8 @@ const styles = StyleSheet.create({
     height: 80,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 5,
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
     borderRadius: 20,
     backgroundColor: "lightgray",
   },
