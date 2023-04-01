@@ -50,8 +50,8 @@ const Workouts = ({ navigation, route }) => {
                     onPress={() => onPressAction(item)}
                   >
                     <View>
-                      <Headline>{item.name}</Headline>
-                      <Caption>
+                      <Headline style={styles.textStyle}>{item.name}</Headline>
+                      <Caption style={styles.textStyle}>
                         Number of exercises: {item.exercises.length}
                       </Caption>
                     </View>
@@ -66,6 +66,7 @@ const Workouts = ({ navigation, route }) => {
                         }
                         type="antdesign"
                         size={30}
+                        color="#FFFFFF"
                       />
                     </View>
                   </TouchableOpacity>
@@ -107,7 +108,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 16,
-    borderRadius: 20,
-    backgroundColor: "lightgray",
+    borderRadius: 10,
+    backgroundColor: "#FFFFFF20",
+  },
+  textStyle: {
+    color: "#FFFFFF",
   },
 });
