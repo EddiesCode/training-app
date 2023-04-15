@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { Text, Headline } from "react-native-paper";
 import AmountPill from "../components/workout/AmountPill";
+import workoutStore from "../store/workoutStore";
 import exerciseStore from "../store/exerciseStore";
 
 export const StartExercise = ({ navigation, route }) => {
-  const { exerciseName, exerciseId, sets, reps } = route.params;
-  console.log(sets, reps);
+  const { exerciseName, exerciseId, workoutId } = route.params;
+
+  const [reps, setReps] = useState(0);
+  const [set, setSet] = useState(0);
+  const [weight, setWeight] = useState(
+    workoutStore.getWorkoutExerciseDefualtWeightById(workoutId, exerciseId)
+  );
 
   return (
     <View
@@ -22,13 +28,18 @@ export const StartExercise = ({ navigation, route }) => {
         }}
       >
         <Headline style={{ color: "white" }}>{exerciseName}</Headline>
-        <Text style={{ color: "white" }}>{sets}</Text>
-        <Text style={{ color: "white" }}>{reps}</Text>
+        <Text style={{ color: "white", fontSize: 20 }}>Set {set + 1}</Text>
         <AmountPill
-          title={"Weight"}
-          amount={2}
+          title={"Reps"}
+          amount={12}
           addFunc={() => {}}
           subFunc={() => {}}
+        />
+        <AmountPill
+          title={"Weight"}
+          amount={weight}
+          addFunc={() => setWeight(weight + 1)}
+          subFunc={() => setWeight(weight - 1)}
         />
       </View>
 

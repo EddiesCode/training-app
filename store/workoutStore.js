@@ -10,7 +10,7 @@ function addWorkout(workouts, workoutName, exercises) {
     {
       id: crypto.randomUUID(),
       name: workoutName,
-      exercises: exercises,
+      exercises,
     },
   ];
 }
@@ -29,6 +29,35 @@ function updateWorkout(oldWorkoutArr, workoutId, newWorkoutArr) {
       return workout;
     } else {
       return { ...workout, exercises: newWorkoutArr };
+    }
+  });
+}
+
+function updateWorkoutExercise(
+  workouts,
+  workoutId,
+  exerciseId,
+  weight,
+  reps,
+  set
+) {
+  return workouts.map((workout) => {
+    if (workout.id !== workoutId) {
+      return workout;
+    } else {
+      workout.exercises.map((exercise) => {
+        if (exercise.id !== exerciseId) {
+          return exercise;
+        }
+
+        exercise["history"].push({
+          reps,
+          set,
+          weight,
+        });
+        return exercise;
+      });
+      return workout;
     }
   });
 }
@@ -59,8 +88,28 @@ class WorkoutStore {
     return this.workouts.find((workout) => workout.id === id);
   }
 
+  getWorkoutExerciseDefualtWeightById(workoutId, exerciseId) {
+    let workout = this.workouts.find((workout) => workout.id === workoutId);
+    let exercise = workout.exercises.find(
+      (exercise) => exercise.id === exerciseId
+    );
+
+    return exercise.defaultWeight;
+  }
+
   updateWorkout(workoutId, newExerciseArr) {
     this.workouts = updateWorkout(this.workouts, workoutId, newExerciseArr);
+  }
+
+  updateWorkoutExercise(workoutId, exerciseId, weight, reps, set) {
+    this.workouts = updateWorkoutExercise(
+      this.workouts,
+      workoutId,
+      exerciseId,
+      weight,
+      reps,
+      set
+    );
   }
 
   stopStore() {

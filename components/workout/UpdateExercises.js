@@ -23,7 +23,7 @@ const UpdateExercises = () => {
         }}
       >
         <Headline style={{ color: theme.colors.text, marginVertical: 10 }}>
-          Enter sets/reps
+          Enter default weight
         </Headline>
       </View>
       {exerciseStore.exercises.length === 0 && (
@@ -66,8 +66,7 @@ const UpdateExercises = () => {
                   index={index}
                   numColumns={2}
                   exercise={item.exercise}
-                  sets={item.sets}
-                  reps={item.reps}
+                  weight={item.defaultWeight}
                 />
               )}
             />

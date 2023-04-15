@@ -9,7 +9,7 @@ import exerciseStore from "../../store/exerciseStore";
 
 import { useTheme } from "@react-navigation/native";
 
-const Exercises = ({ exercises, screen }) => {
+const Exercises = ({ exercises, workoutId, screen }) => {
   const theme = useTheme();
 
   return (
@@ -47,8 +47,7 @@ const Exercises = ({ exercises, screen }) => {
                 screen={screen}
                 exercise={item.exercise}
                 selected={item.selected}
-                sets={item.sets}
-                reps={item.reps}
+                workoutId={workoutId}
               />
             )}
           />

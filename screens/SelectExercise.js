@@ -27,7 +27,11 @@ const SelectExercise = ({ navigation, route }) => {
 
   return (
     <View>
-      <Exercises exercises={exercises} screen="SelectExercise" />
+      <Exercises
+        exercises={exercises}
+        workoutId={workoutId}
+        screen="SelectExercise"
+      />
     </View>
   );
 };

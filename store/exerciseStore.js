@@ -32,10 +32,8 @@ function increaseAmount(exercises, id, type) {
   return exercises.map((exercise) => {
     if (exercise.id !== id) return exercise;
     switch (type) {
-      case "sets":
-        return { ...exercise, sets: exercise.sets + 1 };
-      case "reps":
-        return { ...exercise, reps: exercise.reps + 1 };
+      case "weight":
+        return { ...exercise, defaultWeight: exercise.defaultWeight + 1 };
       default:
         return { ...exercise };
     }
@@ -46,10 +44,12 @@ function decreaseAmount(exercises, id, type) {
   return exercises.map((exercise) => {
     if (exercise.id !== id) return exercise;
     switch (type) {
-      case "sets":
-        return { ...exercise, sets: exercise.sets > 0 ? exercise.sets - 1 : 0 };
-      case "reps":
-        return { ...exercise, reps: exercise.reps > 0 ? exercise.reps - 1 : 0 };
+      case "weight":
+        return {
+          ...exercise,
+          defaultWeight:
+            exercise.defaultWeight > 0 ? exercise.defaultWeight - 1 : 0,
+        };
       default:
         return { ...exercise };
     }
@@ -105,8 +105,7 @@ class ExerciseStore {
         id: exerciseId,
         exercise: exerciseName,
         image: image,
-        sets: 0,
-        reps: 0,
+        defaultWeight: 0,
       });
     } else {
       this.exercises = deleteExercise(this.exercises, exerciseId);

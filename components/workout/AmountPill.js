@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { useTheme } from "@react-navigation/native";
 import { Icon } from "@rneui/base";
 import { Paragraph } from "react-native-paper";
 import { Button } from "@rneui/base";
+
+import WeightPicker from "../WeightPicker";
 import DropDownPicker from "react-native-dropdown-picker";
 
 const AmountPill = ({ title, amount, addFunc, subFunc }) => {
   const theme = useTheme();
 
-  // Array.from({ length: 2000 }, (_, i) => i / 2 + 0.5).map((value) => ({
-  //   label: value + "kg",
-  //   value: value,
-  // }))
+  const [items, _] = useState(() => {
+    return Array.from({ length: 2000 }, (_, i) => i / 2 + 0.5).map((value) => ({
+      label: value + "kg",
+      value: value,
+    }));
+  }, []);
 
   return (
     <View style={styles.setsAndRepsWrapper}>
@@ -32,7 +36,9 @@ const AmountPill = ({ title, amount, addFunc, subFunc }) => {
             }}
             color={"#00000035"}
             icon={<Icon name="remove" size={30} color={"#FFFFFF"} />}
+            onPress={subFunc}
           />
+          <WeightPicker amount={amount} items={items} />
           <Button
             buttonStyle={styles.buttonIncreaseStyle}
             containerStyle={{
@@ -41,6 +47,7 @@ const AmountPill = ({ title, amount, addFunc, subFunc }) => {
             }}
             color={"#00000035"}
             icon={<Icon name="add" size={30} color={"#FFFFFF"} />}
+            onPress={addFunc}
           />
         </View>
       </View>

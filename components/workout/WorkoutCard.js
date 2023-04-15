@@ -10,9 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 
 const WorkoutCard = ({
   id,
+  workoutId,
   exercise,
-  sets,
-  reps,
   index,
   numColumns,
   screen,
@@ -20,6 +19,7 @@ const WorkoutCard = ({
   deleteExercise,
   increaseAmount,
   decreaseAmount,
+  weight,
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
@@ -51,8 +51,7 @@ const WorkoutCard = ({
             navigation.navigate("StartExercise", {
               exerciseName: exercise,
               exerciseId: id,
-              sets,
-              reps,
+              workoutId,
             });
           } else console.log(exercise, id);
         }}
@@ -101,7 +100,7 @@ const WorkoutCard = ({
           <View style={styles.innerInnerCardWrapper}>
             <View style={styles.setsAndRepsText(theme)}>
               <Paragraph style={{ fontSize: 16, color: theme.colors.text }}>
-                Sets
+                Default weight
               </Paragraph>
             </View>
             <View style={styles.setsAndRepsAmount}>
@@ -115,9 +114,9 @@ const WorkoutCard = ({
                 icon={<Icon name="remove" size={20} color={"#FFFFFF90"} />}
                 onPress={() => {
                   if (screen !== "edit") {
-                    exerciseStore.decreaseAmount(id, "sets");
+                    exerciseStore.decreaseAmount(id, "weight");
                   } else {
-                    decreaseAmount(id, "sets");
+                    decreaseAmount(id, "weight");
                   }
                 }}
               />
@@ -125,7 +124,7 @@ const WorkoutCard = ({
                 <Paragraph
                   style={[styles.paragraphStyle, { color: "#FFFFFF" }]}
                 >
-                  {sets}
+                  {weight}
                 </Paragraph>
               </Button>
               <Button
@@ -138,57 +137,9 @@ const WorkoutCard = ({
                 icon={<Icon name="add" size={20} color={"#FFFFFF90"} />}
                 onPress={() => {
                   if (screen !== "edit") {
-                    exerciseStore.increaseAmount(id, "sets");
+                    exerciseStore.increaseAmount(id, "weight");
                   } else {
-                    increaseAmount(id, "sets");
-                  }
-                }}
-              />
-            </View>
-          </View>
-          <View style={styles.innerInnerCardWrapper}>
-            <View style={styles.setsAndRepsText(theme)}>
-              <Paragraph style={{ fontSize: 16, color: theme.colors.text }}>
-                Reps
-              </Paragraph>
-            </View>
-            <View style={styles.setsAndRepsAmount}>
-              <Button
-                buttonStyle={styles.buttonDecreaseStyle}
-                containerStyle={{
-                  borderTopLeftRadius: 20,
-                  borderBottomLeftRadius: 20,
-                }}
-                color={"#00000035"}
-                icon={<Icon name="remove" size={20} color={"#FFFFFF90"} />}
-                onPress={() => {
-                  if (screen !== "edit") {
-                    exerciseStore.decreaseAmount(id, "reps");
-                  } else {
-                    decreaseAmount(id, "reps");
-                  }
-                }}
-              />
-              <Button buttonStyle={styles.amount(theme)}>
-                <Paragraph
-                  style={[styles.paragraphStyle, { color: "#FFFFFF" }]}
-                >
-                  {reps}
-                </Paragraph>
-              </Button>
-              <Button
-                buttonStyle={styles.buttonIncreaseStyle}
-                containerStyle={{
-                  borderTopRightRadius: 20,
-                  borderBottomRightRadius: 20,
-                }}
-                color={"#00000035"}
-                icon={<Icon name="add" size={20} color={"#FFFFFF90"} />}
-                onPress={() => {
-                  if (screen !== "edit") {
-                    exerciseStore.increaseAmount(id, "reps");
-                  } else {
-                    increaseAmount(id, "reps");
+                    increaseAmount(id, "weight");
                   }
                 }}
               />

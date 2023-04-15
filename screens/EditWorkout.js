@@ -33,10 +33,8 @@ const EditWorkout = ({ navigation, route }) => {
       exercises.map((exercise) => {
         if (exercise.id !== id) return exercise;
         switch (type) {
-          case "sets":
-            return { ...exercise, sets: exercise.sets + 1 };
-          case "reps":
-            return { ...exercise, reps: exercise.reps + 1 };
+          case "weight":
+            return { ...exercise, defaultWeight: exercise.defaultWeight + 1 };
           default:
             return { ...exercise };
         }
@@ -49,15 +47,11 @@ const EditWorkout = ({ navigation, route }) => {
       exercises.map((exercise) => {
         if (exercise.id !== id) return exercise;
         switch (type) {
-          case "sets":
+          case "weight":
             return {
               ...exercise,
-              sets: exercise.sets > 0 ? exercise.sets - 1 : 0,
-            };
-          case "reps":
-            return {
-              ...exercise,
-              reps: exercise.reps > 0 ? exercise.reps - 1 : 0,
+              defaultWeight:
+                exercise.defaultWeight > 0 ? exercise.defaultWeight - 1 : 0,
             };
           default:
             return { ...exercise };
@@ -85,8 +79,7 @@ const EditWorkout = ({ navigation, route }) => {
                 index={index}
                 numColumns={2}
                 exercise={item.exercise}
-                sets={item.sets}
-                reps={item.reps}
+                weight={item.defaultWeight}
                 screen="edit"
                 deleteExercise={deleteExercise}
                 increaseAmount={increaseAmount}
