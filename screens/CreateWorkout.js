@@ -18,6 +18,8 @@ import workoutStore from "../store/workoutStore";
 import { Observer } from "mobx-react";
 import { Divider } from "@rneui/base";
 
+import { SafeAreaView } from "react-native-safe-area-context";
+
 const CreateWorkout = ({ navigation }) => {
   const theme = useTheme();
   const [workoutName, setWorkoutName] = useState("");
@@ -43,7 +45,7 @@ const CreateWorkout = ({ navigation }) => {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.colors.card }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.card }}>
       <ProgressBar currentStepIndex={currentStepIndex} goTo={goTo} />
       {step}
       <Divider />
@@ -105,7 +107,7 @@ const CreateWorkout = ({ navigation }) => {
       >
         Added exercise '{exerciseStore.snackBarText}'
       </Snackbar>
-    </View>
+    </SafeAreaView>
   );
 };
 
