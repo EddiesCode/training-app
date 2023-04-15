@@ -17,7 +17,7 @@ const WeightPicker = ({ amount, items }) => {
           padding: 12,
           width: "70%",
           alignItems: "center",
-          maxHeight: "25%",
+          maxHeight: 300,
         }}
         onBackdropPress={() => setVisible(false)}
       >
@@ -34,16 +34,23 @@ const WeightPicker = ({ amount, items }) => {
           }}
           data={items}
           renderItem={({ item, index }) => (
-            <Text key={index}>{item.label}</Text>
+            <Text style={{ height: 40 }} key={index}>
+              {item.label}
+            </Text>
           )}
-          initialNumToRender={100}
-          initialScrollIndex={50}
-          scrollToIndex={50}
+          getItemLayout={(data, index) => ({
+            length: 40,
+            offset: 40 * index,
+            index,
+          })}
+          initialScrollIndex={96}
         />
       </Overlay>
     </>
   );
 };
+
+// Always 4 number under for item to be placed in middle
 
 export default WeightPicker;
 
