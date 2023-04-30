@@ -31,15 +31,18 @@ export const StartExercise = ({ navigation, route }) => {
         <Text style={{ color: "white", fontSize: 20 }}>Set {set + 1}</Text>
         <AmountPill
           title={"Reps"}
-          amount={12}
-          addFunc={() => {}}
-          subFunc={() => {}}
+          amount={reps}
+          addFunc={() => setReps(reps + 1)}
+          subFunc={() => {
+            if (reps > 1) setReps(reps - 1);
+          }}
         />
         <AmountPill
           title={"Weight"}
           amount={weight}
-          addFunc={() => setWeight(weight + 1)}
-          subFunc={() => setWeight(weight - 1)}
+          addFunc={() => setWeight(weight + 0.5)}
+          subFunc={() => setWeight(weight - 0.5)}
+          setWeight={setWeight}
         />
       </View>
 

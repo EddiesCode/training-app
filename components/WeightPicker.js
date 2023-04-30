@@ -1,14 +1,21 @@
-import { ScrollView, StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Dimensions,
+} from "react-native";
 import React, { useState } from "react";
 import { Button, Overlay } from "@rneui/base";
 
-const WeightPicker = ({ amount, items }) => {
+const WeightPicker = ({ amount, items, setWeight }) => {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
       <Button style={styles.container} onPress={() => setVisible(!visible)}>
-        <Text style={{ fontSize: 30 }}>{amount}</Text>
+        <Text style={{ fontSize: 30, fontWeight: "bold" }}>{amount}</Text>
       </Button>
       <Overlay
         isVisible={visible}
@@ -17,7 +24,7 @@ const WeightPicker = ({ amount, items }) => {
           padding: 12,
           width: "70%",
           alignItems: "center",
-          maxHeight: 300,
+          maxHeight: 400,
         }}
         onBackdropPress={() => setVisible(false)}
       >
@@ -34,16 +41,26 @@ const WeightPicker = ({ amount, items }) => {
           }}
           data={items}
           renderItem={({ item, index }) => (
-            <Text style={{ height: 40 }} key={index}>
+            <Text
+              style={{ height: 80, fontSize: 20, fontWeight: "bold" }}
+              key={index}
+              onPress={() => {
+                setWeight(Number(item.value));
+                setVisible(false);
+              }}
+            >
               {item.label}
             </Text>
           )}
           getItemLayout={(data, index) => ({
-            length: 40,
-            offset: 40 * index,
-            index,
+            length: 80,
+            offset: 80 * index,
+            index: index,
           })}
-          initialScrollIndex={96}
+          initialScrollIndex={amount + amount - 3}
+          snapToAlignment="start"
+          snapToInterval={80}
+          decelerationRate="normal"
         />
       </Overlay>
     </>
