@@ -6,6 +6,20 @@ import workoutStore from "../store/workoutStore";
 import exerciseStore from "../store/exerciseStore";
 
 export const StartExercise = ({ navigation, route }) => {
+  const weightArray = Array.from({ length: 2000 }, (_, i) => i / 2 + 0.5).map(
+    (value) => ({
+      label: value + "kg",
+      value: value,
+    })
+  );
+
+  const repArray = Array.from({ length: 100 }, (_, i) => i + 1).map(
+    (value) => ({
+      label: value + "",
+      value: value,
+    })
+  );
+
   const { exerciseName, exerciseId, workoutId } = route.params;
 
   const [reps, setReps] = useState(0);
@@ -30,14 +44,17 @@ export const StartExercise = ({ navigation, route }) => {
         <Headline style={{ color: "white" }}>{exerciseName}</Headline>
         <Text style={{ color: "white", fontSize: 20 }}>Set {set + 1}</Text>
         <AmountPill
+          items={repArray}
           title={"Reps"}
           amount={reps}
           addFunc={() => setReps(reps + 1)}
           subFunc={() => {
             if (reps > 1) setReps(reps - 1);
           }}
+          setReps={setReps}
         />
         <AmountPill
+          items={weightArray}
           title={"Weight"}
           amount={weight}
           addFunc={() => setWeight(weight + 0.5)}
@@ -55,15 +72,14 @@ export const StartExercise = ({ navigation, route }) => {
         <TouchableOpacity
           onPress={() => {
             setSet((previousSet) => previousSet + 1);
+            setWeight(
+              workoutStore.getWorkoutExerciseDefualtWeightById(
+                workoutId,
+                exerciseId
+              )
+            );
           }}
-          style={{
-            paddingVertical: 24,
-            alignSelf: "center",
-            marginBottom: 50,
-            paddingHorizontal: 24,
-            backgroundColor: "grey",
-            opacity: 0.5,
-          }}
+          style={styles.buttonSetStyle}
         >
           <Text style={{ color: "#FFFFFF" }}>Next Set</Text>
         </TouchableOpacity>
@@ -71,14 +87,7 @@ export const StartExercise = ({ navigation, route }) => {
           onPress={() => {
             setSet((previousSet) => previousSet + 1);
           }}
-          style={{
-            backgroundColor: "grey",
-            opacity: 0.5,
-            paddingVertical: 24,
-            alignSelf: "center",
-            marginBottom: 50,
-            paddingHorizontal: 24,
-          }}
+          style={styles.buttonSetStyle}
         >
           <Text style={{ color: "#FFFFFF" }}>End Exercise</Text>
         </TouchableOpacity>
@@ -97,5 +106,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginBottom: 50,
     paddingHorizontal: 24,
+    borderRadius: 10,
   },
 });

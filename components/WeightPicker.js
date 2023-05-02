@@ -70,7 +70,9 @@ const WeightPicker = ({ amount, items, setWeight }) => {
             offset: 80 * index,
             index: index,
           })}
-          initialScrollIndex={amount + amount - 3}
+          initialScrollIndex={
+            items.length > 100 ? amount + amount - 3 : amount - 3
+          }
           snapToAlignment="start"
           snapToInterval={80}
           decelerationRate="normal"
