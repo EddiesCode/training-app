@@ -5,6 +5,7 @@ import {
   View,
   FlatList,
   Dimensions,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
 import { Button, Overlay } from "@rneui/base";
@@ -14,9 +15,21 @@ const WeightPicker = ({ amount, items, setWeight }) => {
 
   return (
     <>
-      <Button style={styles.container} onPress={() => setVisible(!visible)}>
-        <Text style={{ fontSize: 30, fontWeight: "bold" }}>{amount}</Text>
-      </Button>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setVisible(!visible)}
+      >
+        <Text
+          style={{
+            fontSize: 30,
+            fontWeight: "bold",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          {amount}
+        </Text>
+      </TouchableOpacity>
       <Overlay
         isVisible={visible}
         overlayStyle={{
@@ -72,7 +85,11 @@ const WeightPicker = ({ amount, items, setWeight }) => {
 export default WeightPicker;
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "red",
+  button: {
+    backgroundColor: "grey",
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    justifyContent: "center",
   },
 });
