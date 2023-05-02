@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { Button, Overlay } from "@rneui/base";
 
-const WeightPicker = ({ amount, items, setWeight }) => {
+const WeightPicker = ({ amount, items, setFunc }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -58,7 +58,7 @@ const WeightPicker = ({ amount, items, setWeight }) => {
               style={{ height: 80, fontSize: 20, fontWeight: "bold" }}
               key={index}
               onPress={() => {
-                setWeight(Number(item.value));
+                setFunc(Number(item.value));
                 setVisible(false);
               }}
             >

@@ -9,15 +9,7 @@ import { Button } from "@rneui/base";
 import WeightPicker from "../WeightPicker";
 import DropDownPicker from "react-native-dropdown-picker";
 
-const AmountPill = ({
-  items,
-  title,
-  amount,
-  addFunc,
-  subFunc,
-  setWeight,
-  setReps,
-}) => {
+const AmountPill = ({ items, title, amount, addFunc, subFunc, setFunc }) => {
   const theme = useTheme();
 
   return (
@@ -39,11 +31,7 @@ const AmountPill = ({
             icon={<Icon name="remove" size={30} color={"#FFFFFF"} />}
             onPress={subFunc}
           />
-          <WeightPicker
-            amount={amount}
-            items={items}
-            setWeight={title === "Weight" ? setWeight : setReps}
-          />
+          <WeightPicker amount={amount} items={items} setFunc={setFunc} />
           <Button
             buttonStyle={styles.buttonIncreaseStyle}
             containerStyle={{

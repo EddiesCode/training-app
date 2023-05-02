@@ -51,7 +51,7 @@ export const StartExercise = ({ navigation, route }) => {
           subFunc={() => {
             if (reps > 1) setReps(reps - 1);
           }}
-          setReps={setReps}
+          setFunc={setReps}
         />
         <AmountPill
           items={weightArray}
@@ -59,7 +59,7 @@ export const StartExercise = ({ navigation, route }) => {
           amount={weight}
           addFunc={() => setWeight(weight + 0.5)}
           subFunc={() => setWeight(weight - 0.5)}
-          setWeight={setWeight}
+          setFunc={setWeight}
         />
       </View>
 
