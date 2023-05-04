@@ -50,6 +50,10 @@ function updateWorkoutExercise(
           return exercise;
         }
 
+        if (!exercise["history"]) {
+          exercise["history"] = [];
+        }
+
         exercise["history"].push({
           reps,
           set,
