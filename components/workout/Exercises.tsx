@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import { Headline } from "react-native-paper";
 
-import WorkoutCard from "./WorkoutCard";
+import ExerciseCard from "../ExerciseCard/ExerciseCard";
 
 import { Observer } from "mobx-react";
 import exerciseStore from "../../store/exerciseStore";
@@ -40,15 +40,20 @@ const Exercises = ({ exercises, workoutId, screen }) => {
             numColumns={2}
             key={2}
             renderItem={({ item, index }) => (
-              <WorkoutCard
-                id={item.id}
-                index={index}
-                numColumns={2}
-                screen={screen}
-                exercise={item.exercise}
-                selected={item.selected}
-                workoutId={workoutId}
-              />
+              <View
+                style={[
+                  styles.cardWrapper,
+                  { marginRight: index % 2 !== 0 ? 0 : 5 },
+                ]}
+              >
+                <ExerciseCard
+                  id={item.id}
+                  screen={screen}
+                  exercise={item.exercise}
+                  selected={item.selected}
+                  workoutId={workoutId}
+                />
+              </View>
             )}
           />
         )}
@@ -59,4 +64,8 @@ const Exercises = ({ exercises, workoutId, screen }) => {
 
 export default Exercises;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  cardWrapper: {
+    flex: 0.5,
+  },
+});
