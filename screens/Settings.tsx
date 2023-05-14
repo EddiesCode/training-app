@@ -9,49 +9,26 @@ import {
 
 import { Divider, Icon } from "@rneui/base";
 
-import ThemeListItem from "../components/settings/ThemeListItem";
 import Alert from "../components/Alert";
 
 import { useTheme } from "@react-navigation/native";
-import { useDarkMode } from "../context/themeContext";
 
 const Settings = () => {
   const theme = useTheme();
-  const darkMode = useDarkMode().darkMode;
-  const setDarkMode = useDarkMode().setDarkMode;
 
   const [showAlert, setShowAlert] = useState(false);
 
   return (
     <>
       <ScrollView>
-        {/* {{<Divider
-          style={styles.headerDivider}
-          subHeader="Theme settings"
-          subHeaderStyle={styles.dividerSubHeader(theme)}
-        />
-        <ThemeListItem
-          text="Light mode"
-          checked={!darkMode}
-          onPress={() => setDarkMode(false)}
-        />
-        <Divider width={1} style={{ marginHorizontal: 20 }} />
-        <ThemeListItem
-          text="Dark mode"
-          checked={darkMode}
-          onPress={() => setDarkMode(true)}}
-        />}
-         */}
         <Divider
           style={styles.headerDivider}
           subHeader="Storage settings"
-          subHeaderStyle={styles.dividerSubHeader(theme)}
+          subHeaderStyle={[
+            styles.dividerSubHeader,
+            { color: theme.colors.text },
+          ]}
         />
-
-        {/* 
-      "",
-      "",
-      */}
 
         <TouchableNativeFeedback onPress={() => setShowAlert(true)}>
           <View
@@ -95,12 +72,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     width: 0,
   },
-  dividerSubHeader: (theme) => {
-    return {
-      color: theme.colors.text,
-      marginBottom: 5,
-      marginHorizontal: 15,
-      fontSize: 16,
-    };
+  dividerSubHeader: {
+    marginBottom: 5,
+    marginHorizontal: 15,
+    fontSize: 16,
   },
 });

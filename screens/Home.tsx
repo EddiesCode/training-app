@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { useTheme } from "@react-navigation/native";
 
@@ -10,6 +10,7 @@ const Home = () => {
   const buttonArray = [
     {
       screen: "CreateWorkout",
+      type: "create",
       text: "Create Workout",
     },
     {

@@ -85,16 +85,14 @@ export const StartExercise = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            setSet((previousSet) => {
-              workoutStore.updateWorkoutExercise(
-                workoutId,
-                exerciseId,
-                weight,
-                reps,
-                set
-              );
-              navigation.goBack();
-            });
+            workoutStore.updateWorkoutExercise(
+              workoutId,
+              exerciseId,
+              weight,
+              reps,
+              set
+            );
+            navigation.goBack();
           }}
           style={styles.buttonSetStyle}
         >

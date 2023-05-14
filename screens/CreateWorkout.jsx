@@ -51,7 +51,7 @@ const CreateWorkout = ({ navigation }) => {
       <Divider />
       <View style={styles.footer}>
         <TouchableOpacity
-          style={styles.buttonStyle(theme)}
+          style={styles.buttonStyle}
           onPress={() => (currentStepIndex !== 0 ? back() : cancel())}
         >
           <Paragraph style={{ color: theme.colors.text }}>
@@ -62,7 +62,7 @@ const CreateWorkout = ({ navigation }) => {
         </TouchableOpacity>
         {currentStepIndex === 0 ? (
           <TouchableOpacity
-            style={[styles.buttonStyle(theme), { marginHorizontal: 10 }]}
+            style={[styles.buttonStyle, { marginHorizontal: 10 }]}
             onPress={() => setVisible(true)}
           >
             <Paragraph
@@ -77,7 +77,7 @@ const CreateWorkout = ({ navigation }) => {
         <Observer>
           {() => (
             <TouchableOpacity
-              style={styles.buttonStyle(theme)}
+              style={styles.buttonStyle}
               onPress={() =>
                 currentStepIndex !== steps.length - 1 ? next() : saveWorkout()
               }
@@ -120,15 +120,11 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 70,
   },
-  buttonStyle: (theme) => {
-    return {
-      flex: 1,
-      height: "100%",
-      // borderWidth: 2,
-      // borderColor: theme.colors.primary,
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 5,
-    };
+  buttonStyle: {
+    flex: 1,
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
   },
 });
