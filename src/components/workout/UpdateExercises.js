@@ -5,9 +5,8 @@ import AnimatedLottieView from "lottie-react-native";
 import { Observer } from "mobx-react";
 import { useTheme } from "@react-navigation/native";
 
-import WorkoutCard from "./WorkoutCard";
-
 import exerciseStore from "../../store/exerciseStore";
+import ExerciseCard from "../ExerciseCard/ExerciseCard";
 
 const UpdateExercises = () => {
   const theme = useTheme();
@@ -58,14 +57,13 @@ const UpdateExercises = () => {
               ItemSeparatorComponent={() => <View style={{ height: 5 }} />}
               data={exerciseStore.exercises.slice()}
               numColumns={2}
-              renderItem={({ item, index }) => (
-                <WorkoutCard
+              renderItem={({ item }) => (
+                <ExerciseCard
                   id={item.id}
                   key={item.id}
-                  index={index}
-                  numColumns={2}
                   exercise={item.exercise}
                   weight={item.defaultWeight}
+                  isUpdating={true}
                 />
               )}
             />

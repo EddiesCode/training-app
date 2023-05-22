@@ -1,9 +1,11 @@
 export interface IExerciseCard {
   id: string;
-  workoutId: string;
   exercise: string;
   screen: string;
   selected: boolean;
+  isUpdating: boolean;
+  workoutId?: string;
+  weight?: number;
 }
 
 export type NavigationOptions = {

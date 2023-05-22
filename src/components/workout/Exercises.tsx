@@ -51,7 +51,7 @@ const Exercises = ({ exercises, workoutId, screen }) => {
                   screen={screen}
                   exercise={item.exercise}
                   selected={item.selected}
-                  workoutId={workoutId}
+                  isUpdating={false}
                 />
               </View>
             )}
