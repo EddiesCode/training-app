@@ -2,13 +2,12 @@ import React from "react";
 import { View, FlatList, Text } from "react-native";
 import { Headline } from "react-native-paper";
 import AnimatedLottieView from "lottie-react-native";
-
 import { Observer } from "mobx-react";
+import { useTheme } from "@react-navigation/native";
 
 import WorkoutCard from "./WorkoutCard";
 
 import exerciseStore from "../../store/exerciseStore";
-import { useTheme } from "@react-navigation/native";
 
 const UpdateExercises = () => {
   const theme = useTheme();
@@ -39,7 +38,7 @@ const UpdateExercises = () => {
               <AnimatedLottieView
                 autoPlay
                 style={{ width: "75%" }}
-                source={require("../../assets/lottie-animations/29951-healthy-lifestyle-exercise.json")}
+                source={require("../../../assets/lottie-animations/29951-healthy-lifestyle-exercise.json")}
               />
               <Text style={{ fontSize: 20, color: theme.colors.text }}>
                 No exercises added

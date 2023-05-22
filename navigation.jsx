@@ -7,16 +7,16 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StatusBar } from "expo-status-bar";
 
-import Home from "./screens/Home";
-import Settings from "./screens/Settings";
-import Statistics from "./screens/Statistics";
-import CreateWorkout from "./screens/CreateWorkout";
-import SelectExercise from "./screens/SelectExercise";
-import EditWorkout from "./screens/EditWorkout";
-import Workouts from "./screens/Workouts";
-import StartExercise from "./screens/StartExercise";
+import Home from "./src/screens/Home";
+import Settings from "./src/screens/Settings";
+import Statistics from "./src/screens/Statistics";
+import CreateWorkout from "./src/screens/CreateWorkout";
+import SelectExercise from "./src/screens/SelectExercise";
+import EditWorkout from "./src/screens/EditWorkout";
+import Workouts from "./src/screens/Workouts";
+import StartExercise from "./src/screens/StartExercise";
 
-import { useDarkMode } from "./context/themeContext";
+import { useDarkMode } from "./src/context/themeContext";
 
 import { CustomDarkTheme, CustomLightTheme } from "./assets/globalStyle";
 

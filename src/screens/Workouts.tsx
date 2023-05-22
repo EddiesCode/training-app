@@ -1,11 +1,11 @@
-import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { Observer } from "mobx-react";
-import workoutStore from "../store/workoutStore";
+import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Headline, Paragraph, Caption, Divider } from "react-native-paper";
 import { Icon } from "@rneui/base";
-
+import { Observer } from "mobx-react";
 import AnimatedLottieView from "lottie-react-native";
+
+import workoutStore from "../store/workoutStore";
 
 const Workouts = ({ navigation, route }) => {
   const { screenType } = route.params;
@@ -86,7 +86,7 @@ const Workouts = ({ navigation, route }) => {
               <AnimatedLottieView
                 autoPlay
                 style={{ width: "75%" }}
-                source={require("../assets/lottie-animations/29951-healthy-lifestyle-exercise.json")}
+                source={require("../../assets/lottie-animations/29951-healthy-lifestyle-exercise.json")}
               />
               <Paragraph style={{ color: "#FFFFFF" }}>
                 No workouts added

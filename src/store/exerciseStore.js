@@ -1,7 +1,7 @@
 import * as crypto from "expo-crypto";
 
 import { makeAutoObservable } from "mobx";
-import { defaultData } from "../assets/defaultData";
+import { defaultData } from "../../assets/defaultData";
 import { makePersistable, clearPersistedStore } from "mobx-persist-store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
