@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "strict": true,
   },
+  "compileOnSave": true,
   "extends": "expo/tsconfig.base"
 }
