@@ -58,7 +58,7 @@ export const StartExercise = ({ navigation, route }) => {
           title={"Weight"}
           amount={weight}
           addFunc={() => setWeight(weight + 0.5)}
-          subFunc={() => setWeight(weight - 0.5)}
+          subFunc={() => setWeight((prev) => (prev === 0 ? prev : prev - 0.5))}
           setFunc={setWeight}
         />
       </View>
