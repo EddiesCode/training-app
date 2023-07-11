@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { TouchableOpacity, View, StyleSheet } from "react-native";
 import { Text, Headline } from "react-native-paper";
-import AmountPill from "../components/workout/AmountPill";
-import workoutStore from "../store/workoutStore";
-import exerciseStore from "../store/exerciseStore";
+import AmountPill from "../../components/workout/AmountPill";
+import workoutStore from "../../store/workoutStore/workoutStore";
+import { Set } from "./StartExercise.config";
 
 export const StartExercise = ({ navigation, route }) => {
   const weightArray = Array.from({ length: 2000 }, (_, i) => i / 2 + 0.5).map(
@@ -24,7 +24,7 @@ export const StartExercise = ({ navigation, route }) => {
 
   const [reps, setReps] = useState(0);
   const [set, setSet] = useState(0);
-  const [sets, setSets] = useState<any[]>([]); 
+  const [sets, setSets] = useState<Set[]>([]); 
   const [weight, setWeight] = useState(
     workoutStore.getWorkoutExerciseDefualtWeightById(workoutId, exerciseId)
   );
@@ -84,21 +84,16 @@ export const StartExercise = ({ navigation, route }) => {
           onPress={() => {
             const date = new Date();
 
-
-            
-            
             workoutStore.updateWorkoutHistoryExercise({
-              workoutId,
+              id: workoutId,
               date: date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2,"0") + "-" + date.getDate(),
-              
               exercises: [
                 {
-                  exerciseId: exerciseId,
-                  sets,
+                  id: exerciseId,
+                  data: sets
                 },
               ],
             });
-
 
             navigation.goBack();
           }}

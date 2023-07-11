@@ -6,7 +6,7 @@ import ImagePicker from "./ImagePicker";
 
 import { useTheme } from "@react-navigation/native";
 
-import exerciseStore from "../../store/exerciseStore";
+import exerciseStore from "../../store/exerciseStore/exerciseStore";
 import { observer } from "mobx-react";
 
 const CreateWorkoutModal = ({ visible, setVisible, setSnackbarVisible }) => {

@@ -5,7 +5,7 @@ import { Headline } from "react-native-paper";
 import WorkoutCard from "./WorkoutCard";
 
 import { Observer } from "mobx-react";
-import exerciseStore from "../../store/exerciseStore";
+import exerciseStore from "../../store/exerciseStore/exerciseStore";
 
 import { useTheme } from "@react-navigation/native";
 

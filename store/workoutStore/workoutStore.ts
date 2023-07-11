@@ -1,8 +1,13 @@
 import * as crypto from "expo-crypto";
 
 import { makeAutoObservable } from "mobx";
-import { makePersistable, stopPersisting } from "mobx-persist-store";
+import {
+  clearPersistedStore,
+  makePersistable,
+  stopPersisting,
+} from "mobx-persist-store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Workout, WorkoutHistoryType } from "./workoutStore.config";
 
 function addWorkout(workouts, workoutName, exercises) {
   return [
@@ -19,7 +24,11 @@ function deleteWorkout(workouts, workoutId) {
   return workouts.filter((workout) => workout.id !== workoutId);
 }
 
-function updateWorkout(oldWorkoutArr, workoutId, newWorkoutArr) {
+function updateWorkout(
+  oldWorkoutArr: Workout[],
+  workoutId: string,
+  newWorkoutArr: Workout[]
+): any[] {
   if (newWorkoutArr.length === 0) {
     return oldWorkoutArr.filter((workout) => workout.id !== workoutId);
   }
@@ -33,25 +42,39 @@ function updateWorkout(oldWorkoutArr, workoutId, newWorkoutArr) {
   });
 }
 
-function updateWorkoutHistoryExercise(workoutHistory, workout) {
-  if (workoutHistory.length === 0) workoutHistory.push(workout);
-  console.log(workoutHistory);
-  return workoutHistory.map((item) => {
-    if (item.workoutId !== workout.workoutId) {
-      //workoutHistory.push(workout);
-      return [...workoutHistory, workout];
+function updateWorkoutHistoryExercise(
+  workoutHistory: WorkoutHistoryType[],
+  workout: WorkoutHistoryType
+) {
+  console.log("history", workoutHistory);
+  const found = workoutHistory.find((item) => item.id === workout.id);
+
+  if (!found) {
+    return [workout];
+  }
+
+  return workoutHistory.map((historyItem) => {
+    if (historyItem.id !== workout.id) {
+      return historyItem;
     }
-    item.exercises.map((exercise) => {
-      console.log(exercise);
-      if (exercise.exerciseId !== workout.exercise.exerciseId) return exercise;
-      exercise.sets = workout.exercise.sets;
+    historyItem.exercises.map((historyExercise) => {
+      const foundExercise = workout.exercises.find(
+        (workoutExercise) => historyExercise.id !== workoutExercise.id
+      );
+      console.log("++++++++++++", foundExercise);
+      console.log("------------", historyExercise);
+
+      if (foundExercise) historyItem.exercises.push(foundExercise);
+
+      return historyExercise;
     });
+    return historyItem;
   });
 }
 
 class WorkoutStore {
-  workouts = [];
-  workoutHistory = [];
+  workouts: Workout[] = [];
+  workoutHistory: WorkoutHistoryType[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -88,16 +111,22 @@ class WorkoutStore {
     this.workouts = updateWorkout(this.workouts, workoutId, newExerciseArr);
   }
 
-  updateWorkoutHistoryExercise(workout) {
-    this.workoutsHistory = updateWorkoutHistoryExercise(
+  updateWorkoutHistoryExercise(workout: WorkoutHistoryType) {
+    this.workoutHistory = updateWorkoutHistoryExercise(
       this.workoutHistory,
       workout
     );
-    console.log(this.workoutHistory);
+    this.workoutHistory.map((item) => console.log(item));
   }
 
   stopStore() {
     stopPersisting(this);
+  }
+
+  clearStoredData() {
+    clearPersistedStore(this);
+    this.workouts = [];
+    this.workoutHistory = [];
   }
 }
 

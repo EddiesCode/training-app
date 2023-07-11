@@ -3,7 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from "react-native";
 
 import { useTheme } from "@react-navigation/native";
 import { Icon } from "@rneui/base";
-import exerciseStore from "../../store/exerciseStore";
+import exerciseStore from "../../store/exerciseStore/exerciseStore";
 import { Subheading, Paragraph } from "react-native-paper";
 import { Button } from "@rneui/base";
 import { useNavigation } from "@react-navigation/native";

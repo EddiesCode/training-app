@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { useState, useLayoutEffect, useEffect } from "react";
 import { useTheme } from "@react-navigation/native";
-import workoutStore from "../store/workoutStore";
+import workoutStore from "../store/workoutStore/workoutStore";
 import Exercises from "../components/workout/Exercises";
 
 const SelectExercise = ({ navigation, route }) => {

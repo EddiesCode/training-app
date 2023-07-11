@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Observer } from "mobx-react";
-import workoutStore from "../store/workoutStore";
+import workoutStore from "../store/workoutStore/workoutStore";
 import { Headline, Paragraph, Caption, Divider } from "react-native-paper";
 import { Icon } from "@rneui/base";
 

@@ -1,7 +1,8 @@
 import React from "react";
 import Dialog from "react-native-dialog";
 
-import exerciseStore from "../store/exerciseStore";
+import exerciseStore from "../store/exerciseStore/exerciseStore";
+import workoutStore from "../store/workoutStore/workoutStore";
 
 const Alert = ({ showAlert, setShowAlert }) => {
   const handleCancel = () => {
@@ -10,6 +11,7 @@ const Alert = ({ showAlert, setShowAlert }) => {
 
   const handleDelete = () => {
     exerciseStore.clearStoredData();
+    workoutStore.clearStoredData();
     setShowAlert(false);
   };
 

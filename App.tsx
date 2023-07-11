@@ -2,7 +2,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Navigation from "./navigation";
 import ThemeProvider from "./context/themeContext";
 import { useEffect } from "react";
-import workoutStore from "./store/workoutStore";
+import workoutStore from "./store/workoutStore/workoutStore";
 
 // App Navigation Component
 export default function App() {

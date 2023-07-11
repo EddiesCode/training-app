@@ -7,7 +7,7 @@ import { Observer } from "mobx-react";
 
 import WorkoutCard from "./WorkoutCard";
 
-import exerciseStore from "../../store/exerciseStore";
+import exerciseStore from "../../store/exerciseStore/exerciseStore";
 import { useTheme } from "@react-navigation/native";
 
 const UpdateExercises = () => {

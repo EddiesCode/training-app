@@ -14,7 +14,7 @@ import CreateWorkout from "./screens/CreateWorkout";
 import SelectExercise from "./screens/SelectExercise";
 import EditWorkout from "./screens/EditWorkout";
 import Workouts from "./screens/Workouts";
-import StartExercise from "./screens/StartExercise";
+import StartExercise from "./screens/StartExercise/StartExercise";
 
 import { useDarkMode } from "./context/themeContext";
 

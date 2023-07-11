@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import WorkoutCard from "../components/workout/WorkoutCard";
-import workoutStore from "../store/workoutStore";
+import workoutStore from "../store/workoutStore/workoutStore";
 import { Observer } from "mobx-react";
 import { Button } from "react-native-paper";
 

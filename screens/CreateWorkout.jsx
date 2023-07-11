@@ -12,8 +12,8 @@ import CreateWorkoutModal from "../components/workout/CreateWorkoutModal";
 import { useMultistepPage } from "../hooks/useMultistepPage";
 import { useTheme } from "@react-navigation/native";
 
-import exerciseStore from "../store/exerciseStore";
-import workoutStore from "../store/workoutStore";
+import exerciseStore from "../store/exerciseStore/exerciseStore";
+import workoutStore from "../store/workoutStore/workoutStore";
 
 import { Observer } from "mobx-react";
 import { Divider } from "@rneui/base";

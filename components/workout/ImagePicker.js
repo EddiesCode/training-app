@@ -2,7 +2,7 @@ import React from "react";
 import { Text, Image, View, StyleSheet, TouchableOpacity } from "react-native";
 import * as ImagePick from "expo-image-picker";
 
-import exerciseStore from "../../store/exerciseStore";
+import exerciseStore from "../../store/exerciseStore/exerciseStore";
 import { observer } from "mobx-react";
 import { Icon } from "@rneui/base";
 import { Paragraph } from "react-native-paper";
