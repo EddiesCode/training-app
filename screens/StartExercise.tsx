@@ -24,6 +24,7 @@ export const StartExercise = ({ navigation, route }) => {
 
   const [reps, setReps] = useState(0);
   const [set, setSet] = useState(0);
+  const [sets, setSets] = useState<any[]>([]); 
   const [weight, setWeight] = useState(
     workoutStore.getWorkoutExerciseDefualtWeightById(workoutId, exerciseId)
   );
@@ -71,13 +72,9 @@ export const StartExercise = ({ navigation, route }) => {
       >
         <TouchableOpacity
           onPress={() => {
+            setSets((prevSets) => [...prevSets, { set: set, weight: weight, reps: reps }]);
             setSet((previousSet) => previousSet + 1);
-            setWeight(
-              workoutStore.getWorkoutExerciseDefualtWeightById(
-                workoutId,
-                exerciseId
-              )
-            );
+            
           }}
           style={styles.buttonSetStyle}
         >
@@ -85,13 +82,24 @@ export const StartExercise = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            workoutStore.updateWorkoutExercise(
+            const date = new Date();
+
+
+            
+            
+            workoutStore.updateWorkoutHistoryExercise({
               workoutId,
-              exerciseId,
-              weight,
-              reps,
-              set
-            );
+              date: date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2,"0") + "-" + date.getDate(),
+              
+              exercises: [
+                {
+                  exerciseId: exerciseId,
+                  sets,
+                },
+              ],
+            });
+
+
             navigation.goBack();
           }}
           style={styles.buttonSetStyle}

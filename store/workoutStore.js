@@ -33,36 +33,19 @@ function updateWorkout(oldWorkoutArr, workoutId, newWorkoutArr) {
   });
 }
 
-function updateWorkoutExercise(
-  workouts,
-  workoutId,
-  exerciseId,
-  weight,
-  reps,
-  set
-) {
-  return workouts.map((workout) => {
-    if (workout.id !== workoutId) {
-      return workout;
-    } else {
-      workout.exercises.map((exercise) => {
-        if (exercise.id !== exerciseId) {
-          return exercise;
-        }
-
-        if (!exercise["history"]) {
-          exercise["history"] = [];
-        }
-
-        exercise["history"].push({
-          reps,
-          set,
-          weight,
-        });
-        return exercise;
-      });
-      return workout;
+function updateWorkoutHistoryExercise(workoutHistory, workout) {
+  if (workoutHistory.length === 0) workoutHistory.push(workout);
+  console.log(workoutHistory);
+  return workoutHistory.map((item) => {
+    if (item.workoutId !== workout.workoutId) {
+      //workoutHistory.push(workout);
+      return [...workoutHistory, workout];
     }
+    item.exercises.map((exercise) => {
+      console.log(exercise);
+      if (exercise.exerciseId !== workout.exercise.exerciseId) return exercise;
+      exercise.sets = workout.exercise.sets;
+    });
   });
 }
 
@@ -105,15 +88,12 @@ class WorkoutStore {
     this.workouts = updateWorkout(this.workouts, workoutId, newExerciseArr);
   }
 
-  updateWorkoutExercise(workoutId, exerciseId, weight, reps, set) {
-    this.workouts = updateWorkoutExercise(
-      this.workouts,
-      workoutId,
-      exerciseId,
-      weight,
-      reps,
-      set
+  updateWorkoutHistoryExercise(workout) {
+    this.workoutsHistory = updateWorkoutHistoryExercise(
+      this.workoutHistory,
+      workout
     );
+    console.log(this.workoutHistory);
   }
 
   stopStore() {
