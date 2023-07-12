@@ -21,7 +21,7 @@ export const StartExercise = ({ navigation, route }) => {
     })
   );
 
-  const { exerciseName, exerciseId, workoutId } = route.params;
+  const { exerciseName, exerciseId, workoutId, removeExercise } = route.params;
 
   const [reps, setReps] = useState<number>(0);
   const [set, setSet] = useState<number>(1);
@@ -114,6 +114,7 @@ export const StartExercise = ({ navigation, route }) => {
                   ],
                 });
 
+                removeExercise(exerciseId);
                 navigation.goBack();
               }}
               style={styles.buttonSetStyle}

@@ -21,6 +21,7 @@ const WorkoutCard = ({
   increaseAmount,
   decreaseAmount,
   weight,
+  removeExercise,
 }) => {
   const theme = useTheme();
   const navigation = useNavigation();
@@ -53,7 +54,7 @@ const WorkoutCard = ({
               exerciseName: exercise,
               exerciseId: id,
               workoutId,
-              openModal: true,
+              removeExercise,
             });
           } else console.log(exercise, id);
         }}

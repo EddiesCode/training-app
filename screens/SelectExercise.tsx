@@ -29,6 +29,7 @@ const SelectExercise = ({ navigation, route }) => {
     <View>
       <Exercises
         exercises={exercises}
+        setExercises={setExercises}
         workoutId={workoutId}
         screen="SelectExercise"
       />

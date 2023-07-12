@@ -9,8 +9,15 @@ import exerciseStore from "../../store/exerciseStore/exerciseStore";
 
 import { useTheme } from "@react-navigation/native";
 
-const Exercises = ({ exercises, workoutId, screen }) => {
+const Exercises = ({ exercises, setExercises, workoutId, screen }) => {
   const theme = useTheme();
+
+  const removeCompletedExercise = (exerciseId) => {
+    const filteredExercises = exercises.filter(
+      (item) => item.id !== exerciseId
+    );
+    setExercises(filteredExercises);
+  };
 
   return (
     <>
@@ -48,6 +55,7 @@ const Exercises = ({ exercises, workoutId, screen }) => {
                 exercise={item.exercise}
                 selected={item.selected}
                 workoutId={workoutId}
+                removeExercise={removeCompletedExercise}
               />
             )}
           />
