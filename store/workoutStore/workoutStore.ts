@@ -116,7 +116,9 @@ class WorkoutStore {
       this.workoutHistory,
       workout
     );
-    this.workoutHistory.map((item) => console.log(item));
+    this.workoutHistory.map((item) =>
+      item.exercises.map((estse) => console.log(estse.data))
+    );
   }
 
   stopStore() {

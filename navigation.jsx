@@ -10,6 +10,7 @@ import { StatusBar } from "expo-status-bar";
 import Home from "./screens/Home";
 import Settings from "./screens/Settings";
 import Statistics from "./screens/Statistics";
+import History from "./screens/History/History";
 import CreateWorkout from "./screens/CreateWorkout";
 import SelectExercise from "./screens/SelectExercise";
 import EditWorkout from "./screens/EditWorkout";
@@ -57,6 +58,7 @@ function BottomTabs() {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Statistics" component={Statistics} />
+      <Tab.Screen name="History" component={History} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
