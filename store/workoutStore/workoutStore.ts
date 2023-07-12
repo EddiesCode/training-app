@@ -46,7 +46,6 @@ function updateWorkoutHistoryExercise(
   workoutHistory: WorkoutHistoryType[],
   workout: WorkoutHistoryType
 ) {
-  console.log("history", workoutHistory);
   const found = workoutHistory.find((item) => item.id === workout.id);
 
   if (!found) {
@@ -61,8 +60,6 @@ function updateWorkoutHistoryExercise(
       const foundExercise = workout.exercises.find(
         (workoutExercise) => historyExercise.id !== workoutExercise.id
       );
-      console.log("++++++++++++", foundExercise);
-      console.log("------------", historyExercise);
 
       if (foundExercise) historyItem.exercises.push(foundExercise);
 
@@ -115,9 +112,6 @@ class WorkoutStore {
     this.workoutHistory = updateWorkoutHistoryExercise(
       this.workoutHistory,
       workout
-    );
-    this.workoutHistory.map((item) =>
-      item.exercises.map((estse) => console.log(estse.data))
     );
   }
 
