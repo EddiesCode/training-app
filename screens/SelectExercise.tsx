@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { useState, useLayoutEffect, useEffect } from "react";
 import { useTheme } from "@react-navigation/native";
 import workoutStore from "../store/workoutStore/workoutStore";
@@ -8,7 +8,7 @@ const SelectExercise = ({ navigation, route }) => {
   const { workoutName, workoutId } = route.params;
 
   const theme = useTheme();
-  const [exercises, setExercises] = useState([]);
+  const [exercises, setExercises] = useState<Array<any> | undefined>(undefined);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -24,6 +24,17 @@ const SelectExercise = ({ navigation, route }) => {
     const workout = workoutStore.getWorkoutById(workoutId);
     setExercises(workout.exercises.slice());
   }, []);
+
+  useEffect(() => {
+    if (exercises && exercises.length < 1) {
+      Alert.alert("Workout finished!", "Great job!", [
+        {
+          text: "Continue",
+          onPress: navigation.navigate("Home"),
+        },
+      ]);
+    }
+  }, [exercises]);
 
   return (
     <View>

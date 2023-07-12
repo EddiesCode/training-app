@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, View, FlatList } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, View, FlatList, Alert } from "react-native";
 import { Headline } from "react-native-paper";
 
 import WorkoutCard from "./WorkoutCard";
